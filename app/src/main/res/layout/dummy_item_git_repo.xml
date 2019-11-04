@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="21dp">
+
+        <View
+            android:id="@+id/thumbnail"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="#dddddd"
+            android:contentDescription="@null" />
+
+        <View
+            android:id="@+id/tv_authorName"
+            android:layout_width="100dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:background="#dddddd"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            tools:text="Mudit Sen" />
+
+        <View
+            android:id="@+id/tv_repoName"
+            android:layout_width="260dp"
+            android:layout_height="10dp"
+            android:layout_below="@+id/tv_authorName"
+            android:layout_alignLeft="@+id/tv_authorName"
+            android:layout_marginTop="6dp"
+            android:background="#dddddd"
+            android:textColor="@color/colorText"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:text="Mudit Sen" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+</LinearLayout>

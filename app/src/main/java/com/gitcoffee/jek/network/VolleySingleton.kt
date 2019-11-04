@@ -14,9 +14,9 @@ class VolleySingleton private constructor(context: Context) {
         val cache = DiskBasedCache(context.cacheDir, 10 * 1024 * 1024)
         val network = BasicNetwork(HurlStack())
         RequestQueue(cache,network)
+    }.also {
+        it.value.start()
     }
-
-
 
     companion object{
 

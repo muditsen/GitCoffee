@@ -1,24 +1,19 @@
 package com.gitcoffee.jek.network
 
 import com.android.volley.AuthFailureError
-import com.android.volley.NetworkResponse
 import com.android.volley.Request
 import com.android.volley.Request.Method.GET
 import com.android.volley.Response
-import com.android.volley.toolbox.HttpHeaderParser
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.android.volley.VolleyError
 
-class BaseRequest<T>(
+abstract class BaseRequest<T>(
     method: Int = GET,
     url: String,
     private val headers: HashMap<String, String> = HashMap(),
     private val postParams: HashMap<String, String> = HashMap(),
     private var requestPriority: Priority = Priority.NORMAL,
-    private val responseType: Class<T>,
     private val requestBody: String? = null,
-    errorListener: Response.ErrorListener,
-    private val responseListener: Response.Listener<T>
+    errorListener: Response.ErrorListener
 ) : Request<T>(method, url, errorListener) {
 
 
@@ -34,19 +29,6 @@ class BaseRequest<T>(
         String.format("application/json; charset=%s", protocolCharset)
 
 
-    override fun parseNetworkResponse(response: NetworkResponse?): Response<T> {
-        val responseStr = String(response?.data!!)
-
-        return Response.success(
-            Gson().fromJson(responseStr, responseType),
-            HttpHeaderParser.parseCacheHeaders(response)
-        )
-    }
-
-    override fun deliverResponse(response: T) {
-        responseListener.onResponse(response)
-    }
-
 
     override fun getParams(): MutableMap<String, String> {
         if (postParams.isEmpty()) {
@@ -57,13 +39,12 @@ class BaseRequest<T>(
 
     override fun getHeaders(): MutableMap<String, String> {
         if (headers.isEmpty()) {
-            return super.getParams()
+            return super.getHeaders()
         }
 
+        super.getHeaders().putAll(headers)
 
-        super.getParams().putAll(headers)
-
-        return super.getParams()
+        return super.getHeaders()
     }
 
     override fun getBody(): ByteArray {
@@ -86,5 +67,13 @@ class BaseRequest<T>(
 
     fun setRequestPriority(priority: Request.Priority) {
         this.requestPriority = priority
+    }
+
+    fun execute() {
+        VolleySingleton.getInstance().addToRequestQueue(this)
+    }
+
+    override fun deliverError(error: VolleyError?) {
+        super.deliverError(error)
     }
 }

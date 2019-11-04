@@ -1,4 +1,4 @@
-package com.gitcoffee.jek.presentation
+package com.gitcoffee.jek.presentation.models
 
 data class TrendingRepoItem(val author:String?,
                             val name:String?,
