@@ -22,7 +22,6 @@ open class GitTrendingLocalRepository @Inject constructor(private val db: Trendi
 
     override fun getTrendingRepos(resultList: MutableLiveData<Resource<List<TrendingRepoItem>>>){
 
-
         resultList.value = Resource.loading()
 
         uiScope.launch {
@@ -36,6 +35,7 @@ open class GitTrendingLocalRepository @Inject constructor(private val db: Trendi
         }
 
     }
+
 
     private suspend fun mapDbData() = withContext(Dispatchers.IO){
         val list = java.util.ArrayList<TrendingRepoItem>()
