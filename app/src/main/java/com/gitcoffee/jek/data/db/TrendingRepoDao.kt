@@ -18,7 +18,7 @@ interface TrendingRepoDao {
     @Query("Delete from Trending_repo_table")
     fun deleteAllEntries() : Int
 
-    @Query("SELECT * FROM Trending_repo_table ORDER BY "+"ID"+" ASC")
+    @Query("SELECT * FROM Trending_repo_table")
     fun getAllTrendingRepos(): List<TrendingRepoEntity>
 
     @Query("SELECT * FROM Trending_repo_table ORDER BY "+"STARS"+" ASC")

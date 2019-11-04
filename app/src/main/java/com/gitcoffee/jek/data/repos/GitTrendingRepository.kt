@@ -15,7 +15,7 @@ open class GitTrendingRepository @Inject constructor(
     private val sharedPreferences:SharedPreferences
 ) : GitTrendDataSource {
 
-    var forceFetchRemote: Boolean = true
+    var forceFetchRemote: Boolean = false
 
     private var cacheExists: Boolean = false
 
