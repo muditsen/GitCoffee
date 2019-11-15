@@ -61,6 +61,7 @@ class GitTrendActivity : AppCompatActivity(), View.OnClickListener {
         addObserver()
 
         trendViewModel.fetchTrendingRepo()
+
     }
 
     private fun setUpActionBar() {
@@ -156,7 +157,7 @@ class GitTrendActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_trending_activity, menu)
+        //menuInflater.inflate(R.menu.menu_trending_activity, menu)
         return true
     }
 

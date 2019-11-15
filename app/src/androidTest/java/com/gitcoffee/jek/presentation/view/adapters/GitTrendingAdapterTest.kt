@@ -52,6 +52,7 @@ class GitTrendingAdapterTest {
             list.add(trendingRepoEntity)
         }
 
+
         return list
     }
 
