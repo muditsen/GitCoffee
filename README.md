@@ -1,6 +1,6 @@
 # GitCoffee
 
-Application to show usage of
+## Application to show usage of
 
 <p> Dagger 2 </p>
 <p> Co-Routines </p>
